@@ -1,0 +1,24 @@
+-- API
+------------------------------------------------
+DROP TABLE IF EXISTS ANIMALS cascade;  
+CREATE TABLE ANIMALS( 
+id BINARY(16) NOT NULL,
+name VARCHAR(50) NOT NULL,
+PRIMARY KEY(id)
+);
+
+
+DROP TABLE IF EXISTS TRICKS cascade;  
+CREATE TABLE TRICKS( 
+id BINARY(16) NOT NULL,
+PRIMARY KEY(id)
+);
+
+DROP TABLE IF EXISTS ANIMALS_TO_TRICKS cascade; 
+CREATE TABLE ANIMALS_TO_TRICKS( 
+animal_id BINARY(16) NOT NULL,
+trick_id BINARY(16) NOT NULL,
+  FOREIGN KEY (animal_id) REFERENCES ANIMALS(id),
+  FOREIGN KEY (trick_id) REFERENCES TRICKS(id),
+  PRIMARY KEY (animal_id, trick_id)
+);
